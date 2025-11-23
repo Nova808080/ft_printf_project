@@ -1,29 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bchergua <bchergua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/22 12:04:39 by bchergua          #+#    #+#             */
-/*   Updated: 2025/11/22 12:42:17 by bchergua         ###   ########.fr       */
+/*   Created: 2025/11/22 12:05:42 by bchergua          #+#    #+#             */
+/*   Updated: 2025/11/22 22:40:54 by bchergua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-#define FT_PRINTF_H
+#include "../ft_printf.h"
 
-#include <stdarg.h>
-#include <unistd.h>
-#include <stdlib.h>
+int ft_putnbr(int n)
+{
+    long num;
+    int count;
+    char c;
 
-int ft_printf(const char *format, ...);
+    num = n;
+    count = 0;
 
-int ft_putchar(char c);
-int ft_putstr(char *s);
-int ft_putnbr(int n);
-int ft_put_unsigned(unsigned int n);
-int ft_puthex(unsigned long n, char format);
-int ft_putpt(unsigned long ptr);
+    if (num < 0)
+    {
+        count += write(1, "-", 1);
+        num = -num;
+    }
 
-#endif
+    if (num >= 10)
+        count += ft_putnbr(num / 10);
+
+    c = (num % 10) + '0';
+    count += write(1, &c, 1);
+
+    return (count);
+}
+

@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bchergua <bchergua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/22 12:04:39 by bchergua          #+#    #+#             */
-/*   Updated: 2025/11/22 12:42:17 by bchergua         ###   ########.fr       */
+/*   Created: 2025/11/22 12:05:58 by bchergua          #+#    #+#             */
+/*   Updated: 2025/11/23 01:48:22 by bchergua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-#define FT_PRINTF_H
+#include "../ft_printf.h"
 
-#include <stdarg.h>
-#include <unistd.h>
-#include <stdlib.h>
+int ft_putstr(char *s)
+{
+    int count;
 
-int ft_printf(const char *format, ...);
+    count = 0;
+    if (!s)
+        return write(1, "(null)", 6);
 
-int ft_putchar(char c);
-int ft_putstr(char *s);
-int ft_putnbr(int n);
-int ft_put_unsigned(unsigned int n);
-int ft_puthex(unsigned long n, char format);
-int ft_putpt(unsigned long ptr);
+    while (*s)
+        count += write(1, s++, 1);
+    return (count);
+}
 
-#endif

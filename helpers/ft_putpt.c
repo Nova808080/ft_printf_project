@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_putpt.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bchergua <bchergua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/22 12:04:39 by bchergua          #+#    #+#             */
-/*   Updated: 2025/11/22 12:42:17 by bchergua         ###   ########.fr       */
+/*   Created: 2025/11/22 12:05:50 by bchergua          #+#    #+#             */
+/*   Updated: 2025/11/22 13:15:39 by bchergua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-#define FT_PRINTF_H
+#include "../ft_printf.h"
 
-#include <stdarg.h>
-#include <unistd.h>
-#include <stdlib.h>
+int ft_putpt(unsigned long ptr)
+{
+    int count;
+    
+    count = 0;
+    if (!ptr)
+        return ft_putstr("(nil)");
 
-int ft_printf(const char *format, ...);
+    count += ft_putstr("0x");
+    count += ft_puthex(ptr, 'x');
 
-int ft_putchar(char c);
-int ft_putstr(char *s);
-int ft_putnbr(int n);
-int ft_put_unsigned(unsigned int n);
-int ft_puthex(unsigned long n, char format);
-int ft_putpt(unsigned long ptr);
+    return (count);
+}
 
-#endif
+
