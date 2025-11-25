@@ -1,7 +1,7 @@
 #include "ft_printf.h"
 #include <stdio.h>
 #include <fcntl.h>
-//            SOME CRAZY TESTS
+//SOME CRAZY TESTS
 int main () 
 {
     int x = 42;
